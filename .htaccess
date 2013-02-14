@@ -1,4 +1,8 @@
-RewriteEngine on
-RewriteBase /
-RewriteCond %{REQUEST_URI} !^/index.php
-RewriteRule .* index.php [L]
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /remote/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . /remote/index.php [L]
+</IfModule>
