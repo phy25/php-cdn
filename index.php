@@ -69,7 +69,7 @@ while(!feof($f_listh)){// match the accessed url with the list
 		$remote_uri = $f_remote_path.$req_file;
 		$remote_publicuri = $f_remote_publicprefix.$f_remote_path.$req_file;
 		break; // exit the loop
-	}elseif($req_file == $f_listl[0]){ // file mode
+	}elseif($req_filename == $f_listl[0]){ // file mode; now it doesn't matter whether ?key=value is given
 		$f_matched = $f_listl;
 		$server_uri = $f_listl[1];
 		$remote_uri = $f_remote_path.$req_filename; // when syncing to remote, ?key=value is useless
@@ -130,7 +130,6 @@ function fetch_file($server_uri){
 /**
  * @param mixed $fp 要识别的字符串或文件指针
  * @param int $header_length 如果 $fp 中同时带有 header 和内容，要自动截取出 header 部分的长度
- *
  * @return int Unix 标准时间戳; 如果识别失败返回 -1
  */
 function get_mtime_from_fp($fp, $header_length = 0){
