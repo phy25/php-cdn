@@ -229,6 +229,7 @@ if (!$force_sync && file_exists($cache_path.'.md5')) {
 			// *** TODO: we may cache the 404 result to prevent abuse
 			header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 			header('Cache-Control: private');
+			header('X-Checker-Status: Fresh');
 			exit('<h1>404 Not Found</h1>');
 		}elseif($server_mtime == -1 || $server_mtime > $f_modified){ // the server is newer; we should fetch the content
 			$server_file = fetch_file($server_uri);
@@ -255,6 +256,7 @@ if (!$force_sync && file_exists($cache_path.'.md5')) {
 				// *** TODO: we may cache the 404 result to prevent abuse
 				header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 				header('Cache-Control: private');
+				header('X-Checker-Status: Fresh');
 				exit('<h1>404 Not Found</h1>');
 			}
 		}else{ // just change the modified time to resign the cache expire
@@ -274,6 +276,7 @@ if (!$force_sync && file_exists($cache_path.'.md5')) {
 		// *** TODO: we may cache the 404 result to prevent abuse
 		header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 		header('Cache-Control: private');
+		header('X-Checker-Status: Created');
 		exit('<h1>404 Not Found</h1>');
 	}else{
 		// save and sync it
