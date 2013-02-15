@@ -43,7 +43,7 @@ $req_file = str_replace($f_relative_path, '', $_SERVER['REQUEST_URI']);
 $req_filename = parse_url($req_file, PHP_URL_PATH);
 
 // encode as filename-safe base64 for the cache name
-$f_name = strtr(base64_encode($req_file), '+/=', '-_,');
+$f_name = strtr(base64_encode($req_filename), '+/=', '-_,');
 
 // parse the file extension
 $f_ext = strrchr($req_filename, '.');
