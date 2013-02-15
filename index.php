@@ -8,7 +8,7 @@
  * server -> this script -> remote
  */
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 require_once('./upyun.class.php');
 
@@ -35,7 +35,7 @@ $f_listloc = './files.lst';
 $f_relative_path = '/remote/';
 
 // default caching time (N seconds) (86400s = 1d)
-$f_expires_default = 60;
+$f_expires_default = 86400;
 
 // make out the right path
 $req_file = str_replace($f_relative_path, '', $_SERVER['REQUEST_URI']);
