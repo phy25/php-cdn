@@ -159,7 +159,7 @@ class PCDNUploader{
 						}else{ 
 							// sync the file to the remote cdn
 							$file->save_cache_md5($server_md5);
-							$remote_res = $file->upload2remote($file->getRemoteUri(), $server_file['contents'], $server_md5);
+							$remote_res = $this->upload2remote($file->getRemoteUri(), $server_file['contents'], $server_md5);
 							if($remote_res['status']){
 								$file->setStatus('Synced');
 							}else{
